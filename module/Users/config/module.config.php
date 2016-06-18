@@ -1,7 +1,5 @@
 <?php
 
-namespace Users;
-
 return array(
     'di' => array(
         'services' => array(
