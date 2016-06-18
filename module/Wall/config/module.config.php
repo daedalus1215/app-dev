@@ -27,4 +27,11 @@ return array(
             ),
         ),
     ),
+    // Specify the controllers available on this module.
+    'controllers' => array(
+        'invokables' => array(
+            // Simple as defining an id for the controller and the class of hte file containing the controller.
+            'Wall\Controller\Index' => 'Wall\Controller\IndexController'
+        ),
+    ),
 );
