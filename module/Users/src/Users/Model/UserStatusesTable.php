@@ -52,13 +52,13 @@ class UserStatusesTable extends AbstractTableGateway implements AdapterAwareInte
         $factory = new InputFactory();
 
 
-        filterValidateUserId($inputFilter);
-        filterValidateStatus($inputFilter);
+        filter_validate_user_id($inputFilter);
+        filter_validate_status($inputFilter);
 
         return $inputFilter;
     }
 
-    public function filterValidateUserId(&$inputFilter, &$factory)
+    public function filter_validate_user_id(&$inputFilter, &$factory)
     {
         $inputFilter->add($factory->createInput(array(
             'name'     => 'user_id',
@@ -83,7 +83,7 @@ class UserStatusesTable extends AbstractTableGateway implements AdapterAwareInte
         )));
     }
 
-    public function filterValidateStatus(&$inputFilter, &$factory)
+    public function filter_validate_status(&$inputFilter, &$factory)
     {
         $inputFilter->add($factory->createInput(array(
             'name' => 'status',
