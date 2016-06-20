@@ -11,7 +11,21 @@ return array(
         'Application',
         'Wall',
         'Users',
-        'Common'
+        'Common',
+        // Apigility Modules.
+        'ZF\Apigility',
+        'ZF\Apigility\Provider',
+        'AssetManager',
+        'ZF\ApiProblem',
+        'ZF\MvcAuth',
+        'ZF\OAuth2',
+        'ZF\Hal',
+        'ZF\ContentNegotiation',
+        'ZF\ContentValidation',
+        'ZF\Rest',
+        'ZF\Rpc',
+        'ZF\Versioning',
+        'ZF\DevelopmentMode',
     ),
 
     // These are various options for the listeners attached to the ModuleManager

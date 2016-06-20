@@ -1,43 +1,54 @@
 <?php
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Zend Framework (http://framework.zend.com/)
+ *
+ * @link      http://github.com/zendframework/ZendSkeletonApplication for the canonical source repository
+ * @copyright Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
 namespace Common;
 
+use Zend\Mvc\MvcEvent;
+
 class Module
 {
+    /**
+     * Convenience method to return the config file
+     *
+     * @return string
+     */
     public function getConfig()
     {
         return include __DIR__ . '/config/module.config.php';
     }
-
+    
+    /**
+     * Return an autoloader configured namespace
+     *
+     * @return array
+     */
     public function getAutoloaderConfig()
     {
         return array(
-            '\Zend\Loader\StandardAutoloader' => array(
+            'Zend\Loader\StandardAutoloader' => array(
                 'namespaces' => array(
                     __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__
                 ),
             ),
         );
     }
+    
     /**
-     * The onBootstrap() method is called when ModuleManager is bootstrapping the module
+     * Attaches the ApiErrorListener on the render event
      *
-     * Configure the listener, adding it to EventManager
-     * @param type $e
+     * @param MvcEvent $e
      */
     public function onBootstrap($e)
     {
         $app = $e->getTarget();
         $services = $app->getServiceManager();
         $events = $app->getEventManager();
-        $events->attach(
-                $services->get('Common\Listeners\Listener')
-        );
+        $events->attach($services->get('Common\Listeners\ApiErrorListener'));
     }
 }

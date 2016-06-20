@@ -1,18 +1,16 @@
 <?php
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Zend Framework (http://framework.zend.com/)
+ *
+ * @link      http://github.com/zendframework/ZendSkeletonApplication for the canonical source repository
+ * @copyright Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
-
-// adding a new object as invokable to the service_manager array. So we will be able to retrieve it later.
 return array(
     'service_manager' => array(
         'invokables' => array(
-            'Common\Listeners\ApiProblemListener' =>
-            'Common\Listeners\ApiProblemListener',
+            'Common\Listeners\ApiErrorListener' => 'Common\Listeners\ApiErrorListener',
         ),
     ),
 );
