@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'ZendXml\\' => array($vendorDir . '/zendframework/zendxml/library'),
+    'StatusLib\\' => array($vendorDir . '/zfcampus/statuslib-example/src'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log'),
     'Prophecy\\' => array($vendorDir . '/phpspec/prophecy/src'),
     'OAuth2' => array($vendorDir . '/bshaffer/oauth2-server-php/src'),
