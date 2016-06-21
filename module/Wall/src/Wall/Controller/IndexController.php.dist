@@ -33,6 +33,12 @@ class IndexController extends AbstractRestfulController
     protected $userTable;
 
     /**
+     * Holds the user_statuses object.
+     */
+    protected $userStatusesTable;
+
+
+    /**
      * Get the UsersTable object from ServiceManager and store it in @$userTable
      * @return Users\Model\UsersTable
      */
@@ -40,27 +46,44 @@ class IndexController extends AbstractRestfulController
     {
         if (!$this->usersTable) {
             $sm = $this->getServiceLocator();
-            $this->usersTable = $sm->get(Users\Model\UsersTable);
+            $this->usersTable = $sm->get('Users\Model\UsersTable');
         }
         return $this->usersTable;
     }
 
 
-    /* Implement the methods of the parent class. */
-
-
     // ALLOWED
     public function get($username)
     {
-      $usersTable = $this->getUsersTable(); //  retrieve the UsersTable object
-      $userData = $usersTable->getByUsername($username);
+      $userTable = $this->getUsersTable();
+      $userStatusesTable = $this->getUserStatusesTable();
 
-      if ($userData !== false) {
-          return new JsonModel($userData->getArrayCopy());
-      } else {
-          throw new \Exception('User not found', 404);
-      }
+      $userData = $usersTable->getByUsername($username);
+      $userStatuses = $userStatusesTable->getByUserId($userData->id)->toArray();
+
+      $wallData = $userData->getArrayCopy();
+      $wallData['feed'] = $userStatuses;
+
+      usort($wallData['feed'], function($a, $b) {
+          // @Todo: Stopped here. page 117, or in the book 88.
+
+          /**
+           * STOPED HERE
+           */
+
+
+      });
     }
+
+
+
+
+
+
+    /* Implement the methods of the parent class. */
+
+
+
 
 
     // NOW ALLOWED
@@ -68,10 +91,24 @@ class IndexController extends AbstractRestfulController
     {
         $this->methodNotAllowed();
     }
+
+    /**
+     * 1. Validate the data coming from the client,
+     * 2. access the database,
+     * 3. store the status of the user, if the data is valid,
+     * 4. and finally return the number of rows affected in the operation.
+     */
     public function create($data)
     {
         $this->methodNotAllowed();
     }
+
+    public function getUserStatusesTable($data)
+    {
+
+    }
+
+
     public function update($id, $data)
     {
         $this->methodNotAllowed();

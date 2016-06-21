@@ -22,7 +22,7 @@ class Module
     {
         return include __DIR__ . '/config/module.config.php';
     }
-    
+
     /**
      * Return an autoloader configured namespace
      *
@@ -38,7 +38,7 @@ class Module
             ),
         );
     }
-    
+
     /**
      * Attaches the ApiErrorListener on the render event
      *
