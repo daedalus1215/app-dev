@@ -37,7 +37,7 @@ class Module
         $services = $app->getServiceManager();
         $events = $app->getEventManager();
         $events->attach(
-                $services->get('Common\Listeners\Listener')
+                $services->get('Common\Listeners\ApiErrorListener')
         );
     }
 }
