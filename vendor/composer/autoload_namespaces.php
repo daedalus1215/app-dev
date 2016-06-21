@@ -6,8 +6,10 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'phpDocumentor' => array($vendorDir . '/phpdocumentor/reflection-docblock/src'),
-    'ZendXml' => array($vendorDir . '/zendframework/zendxml/library'),
+    'ZendXml\\' => array($vendorDir . '/zendframework/zendxml/library'),
+    'Psr\\Log\\' => array($vendorDir . '/psr/log'),
     'Prophecy\\' => array($vendorDir . '/phpspec/prophecy/src'),
-    'Doctrine\\Instantiator\\' => array($vendorDir . '/doctrine/instantiator/src'),
+    'OAuth2' => array($vendorDir . '/bshaffer/oauth2-server-php/src'),
+    'Assetic' => array($vendorDir . '/kriswallsmith/assetic/src'),
+    'AssetManager' => array($vendorDir . '/rwoverdijk/assetmanager/src'),
 );
